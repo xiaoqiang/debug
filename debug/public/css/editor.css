@@ -28,7 +28,7 @@ html[xmlns] .clearfix { display: block; }
 #nav ul { margin-left: 10px; list-style: none; }
 #wrapper #content #nav ul li{position:relative;float:left;padding:0 10px;height:35px;color: #CCC;text-shadow:0 1px 1px #000;text-decoration:none;line-height:35px;cursor:pointer;}
 #wrapper #content #nav ul li a{color: #CCC;text-shadow:0 1px 1px #000;text-decoration:none; display:block;}
-#wrapper #content #nav ul li.active,#wrapper #content #nav ul li a:hover{color: #EEE;background-color:#333;text-decoration:none;}
+#wrapper #content #nav ul li.acttive{color: #EEE;background-color:#333;text-decoration:none;}
 #wrapper #content #nav #logo { float: right; color:#CCC; padding:5px 10px 0 0;}
 #wrapper #content #editor-panel { clear: both; min-height: 400px; background: url(../img/workpanel-left-top.png) left top no-repeat; }
 #wrapper #content #editor-panel #tabs{height:30px;margin-left:70px;}
@@ -42,6 +42,6 @@ html[xmlns] .clearfix { display: block; }
 .drop-panel{position:absolute;width:250px;height:230px;padding:8px;border:1px solid #D6D6D6;border-top:none;background-color:#fff;top:35px;left:0;z-index:9999;overflow-y:scroll;color:#000;text-shadow:none;display:none;cursor:default;box-shadow:3px 3px 12px 0px #22252C;}
 .drop-panel .field label{width:78px;text-align:right;float:left;}
 
-#wrapper #content #editor-panel #tabs .active { background-color: #E8E8E8; border-left: #C7F83E 3px solid; }
+#wrapper #content #editor-panel #tabs .acttive { background-color: #E8E8E8; border-left: #C7F83E 3px solid; }
 #upload-box { background-color: #999; padding: 5px; overflow: hidden; display:none; }
 #upload-box .fields {margin:3px 0;text-align:right;}

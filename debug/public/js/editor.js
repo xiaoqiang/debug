@@ -73,7 +73,7 @@ var initEditor = function(){
 };
 var starTab = function(add){
     tabkey = add;
-    var target = $('.active'), fileName = target.attr("title"), html = '代码地址：<a target="_blank" href="' + fileName + '">' + fileName + '</a>'
+    var target = $('.acttive'), fileName = target.attr("title"), html = '代码地址：<a target="_blank" href="' + fileName + '">' + fileName + '</a>'
     if (add) { // 加星号
         html += '*';
     }
