@@ -9,6 +9,7 @@
     <script src="js/ace/ace.js"></script>
     <script src="js/ace/mode-html.js"></script>
     <script src="js/editor.cookie.js"></script>
+    <script src="js/ZeroClipboard.js"></script>
     <script src="js/editor.js?v=1.2.5"></script>
 </head>
 
@@ -70,7 +71,8 @@
         </div>
         <div id="editor-panel">
             <div id="tabs">
-                <div class="tab active" title="http://debug.cnodejs.net/<%=id%>">代码地址：<a href="http://debug.cnodejs.net/<%=id%>"  target="_blank">http://debug.cnodejs.net/<%=id%></a></div>
+                <div class="tab active" title="http://debug.cnodejs.net/<%=id%>">代码地址：<a href="http://debug.cnodejs.net/<%=id%>" target="_blank">http://debug.cnodejs.net/<%=id%></a></div>
+                <div class="tab" id="copy-wrap"><a id="code-url" href="http://debug.cnodejs.net/<%=id%>" title="复制地址">复制地址</a></div>
             </div>
             <div id="editor" tabindex="1"><%=code%></div>
             <div id="statbar"></div>

@@ -8,6 +8,7 @@ html[xmlns] .clearfix { display: block; }
 * html .clearfix { height: 1%; }
 .d-logo{font-size:18px;font-weight:bold;}
 .d-logo span{color:#C7F83E}
+#code-url{display:inline-block; height:100%;}
 #msg { position: absolute; top:0; left: 0; width: 100%; height: 30px; background: #FFC; border-bottom: #FDCC39 1px solid; line-height: 28px; text-align: center; display: none; }
 #sidebar { position: absolute; top: 0; left: 0; width: 220px; background-color: #E8E8E8; }
 #wrapper { margin-left: 220px; }
@@ -23,6 +24,7 @@ html[xmlns] .clearfix { display: block; }
 #tool-bar li a:hover{ color:#999;}
 .flhover { background: #ccc; }
 #nav{background:#22252C;height:35px;}
+.tab{position:relative;}
 #nav ul { margin-left: 10px; list-style: none; }
 #wrapper #content #nav ul li{position:relative;float:left;padding:0 10px;height:35px;color: #CCC;text-shadow:0 1px 1px #000;text-decoration:none;line-height:35px;cursor:pointer;}
 #wrapper #content #nav ul li a{color: #CCC;text-shadow:0 1px 1px #000;text-decoration:none; display:block;}

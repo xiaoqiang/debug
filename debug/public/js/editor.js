@@ -34,13 +34,14 @@ var initEditor = function(){
             mac: 'Command-S',
             sender: 'editor'
         },
-        exec: function(env, args, request) {
-            if(actionLock) return false;
+        exec: function(env, args, request){
+            if (actionLock) 
+                return false;
             actionLock = true;
             saveFile();
             actionLock = false;
         }
-    });    
+    });
     editor.getSession().on('change', onChange); // 绑定编辑器事件
     $("#editor-theme").change(function(){
         if (!editor) 
@@ -55,13 +56,25 @@ var initEditor = function(){
     $('#nav-save').click(function(){
         saveFile();
     });
+    clip = new ZeroClipboard.Client();
+    clip.setHandCursor(true);
+    
+    
+    clip.addEventListener('mouseOver', function(client){
+        // update the text on mouse over
+        clip.setText($('#code-url').attr('href'));
+    });
+    
+    clip.addEventListener('complete', function(client, text){
+        showMsg('地址已经复制到剪贴板');
+    });
+    
+    clip.glue('code-url', 'copy-wrap');
 };
-var starTab = function(add) {
+var starTab = function(add){
     tabkey = add;
-    var target = $('.tab'),
-    fileName = target.attr("title"),
-    html = '代码地址：<a target="_blank" href="'+fileName+'">'+fileName+'</a>'
-    if(add) { // 加星号
+    var target = $('.active'), fileName = target.attr("title"), html = '代码地址：<a target="_blank" href="' + fileName + '">' + fileName + '</a>'
+    if (add) { // 加星号
         html += '*';
     }
     target.html(html);
@@ -85,7 +98,7 @@ $(document).keydown(function(e){
             saveFile();
             actionLock = false;
             return false;
-        }        
+        }
     }
 });
 
@@ -146,7 +159,8 @@ var saveFile = function(){
                 starTab(false);
                 showMsg('保存成功');
                 setStatusBar();
-            }else{
+            }
+            else {
                 showMsg('保存失败，文件写入异常');
             }
         }
