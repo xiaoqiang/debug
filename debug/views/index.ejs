@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>debug - Enjoy coding Enjoy debugging</title>
+    <link href="css/editor.css?v=1.0.9" rel="stylesheet" type="text/css" />
+    <script src="js/head.load.min.js"></script>
+    <script src="js/jquery-1.6.2.min.js"></script>
+    <script src="js/ace/ace.js"></script>
+    <script src="js/ace/mode-html.js"></script>
+    <script src="js/editor.cookie.js"></script>
+    <script src="js/editor.js?v=1.2.5"></script>
+</head>
+
+<body>
+<div id="sidebar">
+    <div id="app-info">
+        <p class="item d-logo"><span>de</span>bug</p>
+        <p class="item"><label>配色方案：</label>
+                            <select id="editor-theme" name="editor-theme" disabled="disabled">
+                                <option value="dawn">Dawn</option>
+                                <option value="cobalt">Cobalt</option>
+                                <option value="eclipse">Eclipse</option>
+                                <option value="idle_fingers">idleFingers</option>
+                                <option value="kr_theme">krTheme</option>
+                                <option value="monokai">Monokai</option>
+                                <option value="solarized_dark">Solarized Dark</option>
+                                <option value="solarized_light">Solarized Light</option>
+                                <option value="textmate">Textmate</option>
+                                <option value="clouds">Clouds</option>
+                                <option value="twilight">Twilight</option>
+                            </select>
+       </p>
+    </div>
+    <div id="file-explorer">
+        <ul id="tool-bar">
+            <li>
+              页面地址(保存代码即可更新)：
+            </li>
+            <li>
+                <a href="http://debug.cnodejs.net/html/<%=id%>.html" target="_blank">http://debug.cnodejs.net/html/<%=id%>.html</a>
+            </li>
+            <li>
+                <img src="https://chart.googleapis.com/chart?cht=qr&chs=200x200&choe=UTF-8&chld=L|4&chl=http%3A%2F%2Fdebug.cnodejs.net%2Fhtml%2F<%=id%>.html" alt="二维码地址" />
+            </li>
+            <li>
+                1.赠人鲜花手留余香，欢迎大家相互帮助debug！
+            </li>
+            <li>
+                2.bug说明可以采用注释的方式写出来，修改代码建议尽量在注释掉原来代码的基础上修改；
+            </li>
+            <li>
+                3.二维码更方便MobileWeb调试，推荐安装<a href="http://www.xiaoqiang.org/demo/decode/QRdecode.crx" target="_blank">二维码生成和解码的chrome插件</a>
+            </li>
+            <li>
+                意见或者意见请反馈到我的博客：<a href="http://www.xiaoqiang.org" target="_blank">小强ORG</a>
+            </li>
+        </div>        
+    </div>
+</div>
+<div id="wrapper">
+    <div id="content">
+        <div id="nav">
+            <ul>
+                <li id="nav-new" title="新建"><a href="http://debug.cnodejs.net/" target="_blank">新建</a></li>
+                <li id="nav-save" title="快捷键：Ctrl+S(PC), Command+S(Mac)">保存</li>
+                <li id="nav-run" title="运行"><a href="http://debug.cnodejs.net/html/<%=id%>.html" target="_blank">运行</a></li>
+            </ul>
+            <div id="logo" rel="<%=id%>">Enjoy coding Enjoy debugging</div>
+        </div>
+        <div id="editor-panel">
+            <div id="tabs">
+                <div class="tab active" title="http://debug.cnodejs.net/<%=id%>">代码地址：<a href="http://debug.cnodejs.net/<%=id%>"  target="_blank">http://debug.cnodejs.net/<%=id%></a></div>
+            </div>
+            <div id="editor" tabindex="1"><%=code%></div>
+            <div id="statbar"></div>
+        </div>
+    </div>
+</div>
+<div id="msg"></div>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5789434-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>

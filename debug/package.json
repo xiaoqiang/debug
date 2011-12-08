@@ -1,0 +1,9 @@
+{
+   "name":"WebApp Debug",
+   "main":"./server.js",
+   "devDependencies":
+   {
+       "express": "2.3.7",
+       "jade": "0.8.5"
+   }
+}

@@ -1,0 +1,45 @@
+@charset "utf-8";
+
+* { margin: 0; padding: 0; }
+body { font-family: Verdana, Geneva, sans-serif; font-size: 13px; line-height: 1.6; background: #CCCCCC; overflow: hidden; }
+.clearfix:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
+.clearfix { display: inline-block; }
+html[xmlns] .clearfix { display: block; }
+* html .clearfix { height: 1%; }
+.d-logo{font-size:18px;font-weight:bold;}
+.d-logo span{color:#C7F83E}
+#msg { position: absolute; top:0; left: 0; width: 100%; height: 30px; background: #FFC; border-bottom: #FDCC39 1px solid; line-height: 28px; text-align: center; display: none; }
+#sidebar { position: absolute; top: 0; left: 0; width: 220px; background-color: #E8E8E8; }
+#wrapper { margin-left: 220px; }
+#content { }
+#app-info { background: #22252C; padding: 8px 5px; color: #CCC; text-shadow: 0 1px 1px #000; }
+#app-info a { color: #CCC; text-shadow: 0 1px 1px #000; text-decoration: none; }
+#app-info a:hover { color: #EEE; text-decoration: none; }
+#app-info .item { margin-bottom: 5px; }
+#app-info #currentPath { width: 210px; overflow: hidden; }
+#tool-bar { margin:0 auto; width:200px;list-style: none;word-wrap: break-word;vertical-align:middle; padding-bottom:20px;}
+#tool-bar li{ padding-top:10px;}
+#tool-bar li a{ color:#666;}
+#tool-bar li a:hover{ color:#999;}
+.flhover { background: #ccc; }
+#nav{background:#22252C;height:35px;}
+#nav ul { margin-left: 10px; list-style: none; }
+#wrapper #content #nav ul li{position:relative;float:left;padding:0 10px;height:35px;color: #CCC;text-shadow:0 1px 1px #000;text-decoration:none;line-height:35px;cursor:pointer;}
+#wrapper #content #nav ul li a{color: #CCC;text-shadow:0 1px 1px #000;text-decoration:none; display:block;}
+#wrapper #content #nav ul li:hover,#wrapper #content #nav ul li.active,#wrapper #content #nav ul li a:hover{color: #EEE;background-color:#333;text-decoration:none;}
+#wrapper #content #nav #logo { float: right; color:#CCC; padding:5px 10px 0 0;}
+#wrapper #content #editor-panel { clear: both; min-height: 400px; background: url(../img/workpanel-left-top.png) left top no-repeat; }
+#wrapper #content #editor-panel #tabs{height:30px;margin-left:70px;}
+#wrapper #content #editor-panel #tabs .tab {overflow:hidden;float:left;border-left:#999 1px solid;background-color:#D8D8D8;height:30px;line-height:30px;padding:0 5px;}
+#wrapper #content #editor-panel #tabs .tab a{ color:#666;}
+#wrapper #content #editor-panel #tabs .tab a:hover{ color:#999;}
+#wrapper #content #editor-panel #editor {background:#fff;position:relative;left:20px;border:#aaa 1px solid;clear:both;}
+#wrapper #content #editor-panel #statbar { margin: 0 20px; height: 20px; text-align: right; overflow: hidden; }
+
+/*------------------drop-panel-------------------*/
+.drop-panel{position:absolute;width:250px;height:230px;padding:8px;border:1px solid #D6D6D6;border-top:none;background-color:#fff;top:35px;left:0;z-index:9999;overflow-y:scroll;color:#000;text-shadow:none;display:none;cursor:default;box-shadow:3px 3px 12px 0px #22252C;}
+.drop-panel .field label{width:78px;text-align:right;float:left;}
+
+#wrapper #content #editor-panel #tabs .active { background-color: #E8E8E8; border-left: #C7F83E 3px solid; }
+#upload-box { background-color: #999; padding: 5px; overflow: hidden; display:none; }
+#upload-box .fields {margin:3px 0;text-align:right;}
