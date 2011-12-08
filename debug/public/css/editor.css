@@ -28,7 +28,7 @@ html[xmlns] .clearfix { display: block; }
 #nav ul { margin-left: 10px; list-style: none; }
 #wrapper #content #nav ul li{position:relative;float:left;padding:0 10px;height:35px;color: #CCC;text-shadow:0 1px 1px #000;text-decoration:none;line-height:35px;cursor:pointer;}
 #wrapper #content #nav ul li a{color: #CCC;text-shadow:0 1px 1px #000;text-decoration:none; display:block;}
-#wrapper #content #nav ul li:hover,#wrapper #content #nav ul li.active,#wrapper #content #nav ul li a:hover{color: #EEE;background-color:#333;text-decoration:none;}
+#wrapper #content #nav ul li.active,#wrapper #content #nav ul li a:hover{color: #EEE;background-color:#333;text-decoration:none;}
 #wrapper #content #nav #logo { float: right; color:#CCC; padding:5px 10px 0 0;}
 #wrapper #content #editor-panel { clear: both; min-height: 400px; background: url(../img/workpanel-left-top.png) left top no-repeat; }
 #wrapper #content #editor-panel #tabs{height:30px;margin-left:70px;}
