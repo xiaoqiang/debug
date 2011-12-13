@@ -49,12 +49,13 @@ function toHtml(id, res, problem, key){
 function enhtmlspecialchars(str){
     if (typeof(str) == "string") {       
         str = str.replace(/&quot;/g, "\"");
-        str = str.replace(/&#039;/g, "'");
+        str = str.replace(/%E2%80%98/g, "'");
         str = str.replace(/&lt;/g, "<");
         str = str.replace(/&gt;/g, ">");
         str = str.replace(/&brvbar;/g, '|');
         str = str.replace(/&amp;/g, "&"); /* must do &amp; last */
     }
+    console.log('==========='+str+'=====');
     return str;
 }
 app.get('/:id', function(req, res){
