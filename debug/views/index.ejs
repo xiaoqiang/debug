@@ -5,11 +5,12 @@
     <title>debug - Enjoy coding Enjoy debugging</title>
     <link href="css/editor.css?v=1.0.9" rel="stylesheet" type="text/css" />
     <script src="js/head.load.min.js"></script>
-    <script src="js/jquery-1.6.2.min.js"></script>
+    <script src="js/jquery-1.7.min.js"></script>
     <script src="js/ace/ace.js"></script>
     <script src="js/ace/mode-html.js"></script>
     <script src="js/editor.cookie.js"></script>
     <script src="js/ZeroClipboard.js"></script>
+    <script src="js/editor.console.js?v=0.0.4"></script>
     <script src="js/editor.js?v=1.2.5"></script>
 </head>
 
@@ -45,7 +46,7 @@
                 <img src="https://chart.googleapis.com/chart?cht=qr&chs=200x200&choe=UTF-8&chld=L|4&chl=http%3A%2F%2Fdebug.cnodejs.net%2Fhtml%2F<%=id%>.html" alt="二维码地址" />
             </li>
             <li>
-                1.赠人鲜花手留余香，欢迎大家相互帮助debug！
+                1.使用debug console需要在页面头部引用&lt;script src="http://debug.cnodejs.net/js/wa.js"&gt;&lt;/script&gt;，在js调试用调用wa.log('your info');就可以实时打印在控制台了。
             </li>
             <li>
                 2.bug说明可以采用注释的方式写出来，修改代码建议尽量在注释掉原来代码的基础上修改；
@@ -77,6 +78,23 @@
             <div id="editor" tabindex="1"><%=code%></div>
             <div id="statbar"></div>
         </div>
+    </div>
+</div>
+<div id="console">
+    <div id="console-event-handler"></div>
+    <div class="console-nav">
+        <ul>
+            <li id="console-min" title="还原大小">还原大小</li>
+            <li id="console-close" title="改变位置">改变位置</li>
+        </ul>
+    </div>
+    <div class="stdout-panel">
+        <div class="label">当前记录</div>
+        <div id="stdout" class="console-content"></div>
+    </div>
+    <div class="stderr-panel">
+        <div class="label">所有记录</div>
+        <div id="stderr" class="console-content"></div>
     </div>
 </div>
 <div id="msg"></div>

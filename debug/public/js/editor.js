@@ -1,11 +1,21 @@
-var editor, actionLock = false, tabkey = false; // 事件锁
+var editor, actionLock = false, tabkey = false, // 事件锁
+ onStdErr = false, onStdOut = false, //鼠标是否在std的div区域内，如果在则不把滚动条往下拉
+ timer = null, num = -1;
 /*
  * 动态设定编辑器尺寸
  */
-var setElementsSize = function(){
-
-
-    var h = document.documentElement.clientHeight - (80 + 5), w = document.body.clientWidth - 260;
+var setEditorSize = function(h, w, hideConsole, loc){
+    var cli = $("#console");
+    if (!h) {
+        h = document.documentElement.clientHeight - (80 + 5); // 减去header和statusBar的部分
+        if (!hideConsole && loc === "BOTTOM") 
+            h -= cli.height() + 10; // 如果显示console，则要减去console的部分
+    }
+    if (!w) {
+        w = document.body.clientWidth - 260; // 减去sidebar的部分
+        if (!hideConsole && loc === "RIGHT") 
+            w -= cli.width() + 10;
+    }
     $("#tabs").width(w - 50);
     $("#statbar").width(w);
     $("#editor").css("height", h).css("width", w);
@@ -13,6 +23,34 @@ var setElementsSize = function(){
         editor.resize();
 }
 
+var setFileListSize = function(height, hideConsole, loc){
+    height = height || document.documentElement.clientHeight - 145;
+    if (!hideConsole && loc === "BOTTOM") {
+        height -= 135;
+    }
+    $("#file-list").css({
+        "height": height,
+        "overflow": "auto"
+    });
+}
+
+var setElementsSize = function(){
+    var display = CLI.cache.display, location;
+    if (!display) {// 隐藏console
+        setEditorSize(null, null, true);
+        setFileListSize(null, true);
+    }
+    else {
+        location = CLI.cache.location;
+        if (location === "BOTTOM" || location === "RIGHT") {
+            setEditorSize(null, null, false, location);
+        }
+        else {
+            setEditorSize(null, null, false);
+        }
+        setFileListSize(null, false, location);
+    }
+}
 var initEditor = function(){
     editor = ace.edit("editor");
     var HtmlMode = require("ace/mode/html").Mode, theme = cookieHandler.get('theme');
@@ -154,7 +192,7 @@ var saveFile = function(){
             'id': id,
             'code': content
         },
-        success: function(msg){
+        success: function(data){
             if (msg) {
                 starTab(false);
                 showMsg('保存成功');
@@ -168,7 +206,71 @@ var saveFile = function(){
     });
 }
 
+//绑定鼠标进出std DIV的事件
+function mouseOnStdDiv(){
+    $("#stdout").mouseenter(function(){
+        onStdOut = true;
+    });
+    $("#stderr").mouseenter(function(){
+        onStdErr = true;
+    });
+    $("#stdout").mouseleave(function(){
+        onStdOut = false;
+    });
+    $("#stderr").mouseleave(function(){
+        onStdErr = false;
+    })
+}
+
+//获取stdErr和stdOut
+function getOutput(){
+    $.ajax({
+        cache: false,
+        type: 'POST',
+        url: '/logshow/',
+        data: {
+            'id': $('#logo').attr('rel'),
+            'num': num
+        },
+        dataType: 'json',
+        error: function(){
+            $("#" + action).html('debug wa.log is err');
+            clearTimeout(timer);
+            timer = null;
+            timer = setTimeout(function(){
+                getOutput();
+            }, 30000);
+        },
+        success: function(data){
+            if (data.num != -1) {
+                num = data.num;
+                var html = decodeURIComponent(data.log)
+                $('#stdout').html(html);
+                if (html == 'page is loaded! enjoy it!') {
+                    $('#stderr').html(html + '<br />');
+                }
+                else {
+                    $('#stderr').html($('#stderr').html() + html + '<br />');
+                }
+                if (!onStdErr) {
+                    if (!document.getElementById) 
+                        return;
+                    var outDiv = document.getElementById('stderr');
+                    outDiv.scrollTop = outDiv.scrollHeight;
+                }
+            }
+            getOutput();
+        }        
+    });
+}
+
+
+
 $(function(){
+    var id = $('#logo').attr('rel');
     setElementsSize(); // 初始化编辑器和控制台尺寸
     initEditor();
+    getOutput();
 });
+
+

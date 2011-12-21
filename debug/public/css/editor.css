@@ -37,7 +37,26 @@ html[xmlns] .clearfix { display: block; }
 #wrapper #content #editor-panel #tabs .tab a:hover{ color:#999;}
 #wrapper #content #editor-panel #editor {background:#fff;position:relative;left:20px;border:#aaa 1px solid;clear:both;}
 #wrapper #content #editor-panel #statbar { margin: 0 20px; height: 20px; text-align: right; overflow: hidden; }
-
+/*------------------Console-------------------*/
+#console{background-color: #fff;position: absolute;z-index:99;}
+.console-bottom{left:0;bottom:0;width:100%;border-top:#999 2px solid;}
+.console-right{right:0;bottom:0;width:200px;border-left:#999 2px solid;}
+#console #console-event-handler{position:absolute;z-index:999;}
+.console-bottom #console-event-handler{top:-5px;left:0;height:10px;width:100%;cursor:n-resize;}
+.console-right #console-event-handler{left:-5px;top:0;width:10px;height:100%;cursor:w-resize;}
+#console .console-nav{position:absolute;right:10px;top:0;cursor:pointer;list-style:none;z-index:999;}
+#console .console-nav li{display:inline;}
+#console .console-nav li:hover{background-color:#A00000;color:#fff;}
+#console .label{height:20px;}
+#console .stdout-panel, #console .stderr-panel{}
+.console-bottom .stdout-panel,.console-bottom .stderr-panel{}
+.console-bottom #stdout,.console-bottom #stderr{}
+.console-bottom .stdout-panel{float:left;margin-left:5px;}
+.console-bottom .stderr-panel{float:right;margin-right: 5px;}
+.console-right .stdout-panel,.console-right .stderr-panel{margin: 0 5px;}
+#console .console-content{font-family:"Courier New";overflow:auto;line-height:normal;white-space:pre-wrap;word-wrap:break-word;background-color:#000;border:#999 1px solid;resize:none;color:#fff;}
+#console .stderr_gotoline{background:#333;cursor:pointer;}
+#console .stderr_gotoline:hover{text-decoration:underline;}
 /*------------------drop-panel-------------------*/
 .drop-panel{position:absolute;width:250px;height:230px;padding:8px;border:1px solid #D6D6D6;border-top:none;background-color:#fff;top:35px;left:0;z-index:9999;overflow-y:scroll;color:#000;text-shadow:none;display:none;cursor:default;box-shadow:3px 3px 12px 0px #22252C;}
 .drop-panel .field label{width:78px;text-align:right;float:left;}
