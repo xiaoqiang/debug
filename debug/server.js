@@ -56,7 +56,7 @@ function enhtmlspecialchars(str){
     }
     return str;
 }
-app.put('/log/:log', function(req, res){
+/*app.put('/log/:log', function(req, res){
     var log = encodeURIComponent(req.params.log), num, logbox, referer = req.headers.referer, id = referer.substring(30,43);
     fs.readFile('log/' + id + '.json', 'utf8', function(err, data){
         if (err) {
@@ -77,6 +77,7 @@ app.put('/log/:log', function(req, res){
         });
     });
 });
+*/
 app.get('/:id', function(req, res){
     var id = req.params.id, problem;
     if (+id) {
@@ -91,6 +92,7 @@ app.get('/:id', function(req, res){
         });
     }
 });
+/*
 function readLog(id, num, res){
     var logbox;
     fs.readFile('log/' + id + '.json', 'utf8', function(err, data){
@@ -125,6 +127,7 @@ app.post('/logshow/*', function(req, res){
         },30000);
     }
 });
+*/
 app.get('/*', function(req, res){
     var id = getId();
     createProblem(res, id);

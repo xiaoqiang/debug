@@ -35,7 +35,7 @@ var setFileListSize = function(height, hideConsole, loc){
 }
 
 var setElementsSize = function(){
-    var display = CLI.cache.display, location;
+    var display = false, location;
     if (!display) {// 隐藏console
         setEditorSize(null, null, true);
         setFileListSize(null, true);
@@ -193,9 +193,9 @@ var saveFile = function(){
             'code': content
         },
         success: function(data){
-            if (msg) {
+            if (data) {
                 starTab(false);
-                showMsg('保存成功');
+                //showMsg('保存成功');
                 setStatusBar();
             }
             else {
@@ -270,7 +270,7 @@ $(function(){
     var id = $('#logo').attr('rel');
     setElementsSize(); // 初始化编辑器和控制台尺寸
     initEditor();
-    getOutput();
+    //getOutput();
 });
 
 

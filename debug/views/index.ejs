@@ -10,7 +10,7 @@
     <script src="js/ace/mode-html.js"></script>
     <script src="js/editor.cookie.js"></script>
     <script src="js/ZeroClipboard.js"></script>
-    <script src="js/editor.console.js?v=0.0.4"></script>
+    <!--<script src="js/editor.console.js?v=0.0.4"></script>-->
     <script src="js/editor.js?v=1.2.5"></script>
 </head>
 
@@ -45,17 +45,19 @@
             <li>
                 <img src="https://chart.googleapis.com/chart?cht=qr&chs=200x200&choe=UTF-8&chld=L|4&chl=http%3A%2F%2Fdebug.cnodejs.net%2Fhtml%2F<%=id%>.html" alt="二维码地址" />
             </li>
+            <!--
             <li>
                 1.使用debug console需要在页面头部引用&lt;script src="http://debug.cnodejs.net/js/wa.js"&gt;&lt;/script&gt;，在js调试用调用wa.log('your info');就可以实时打印在控制台了。
             </li>
+            -->
             <li>
-                2.bug说明可以采用注释的方式写出来，修改代码建议尽量在注释掉原来代码的基础上修改；
+                1.bug说明可以采用注释的方式写出来，修改代码建议尽量在注释掉原来代码的基础上修改；
             </li>
             <li>
-                3.二维码更方便MobileWeb调试，推荐安装<a href="http://www.xiaoqiang.org/demo/decode/QRdecode.crx" target="_blank">二维码生成和解码的chrome插件</a>
+                2.二维码更方便MobileWeb调试，推荐安装<a href="http://www.xiaoqiang.org/demo/decode/QRdecode.crx" target="_blank">二维码生成和解码的chrome插件</a>
             </li>
             <li>
-                意见或者意见请反馈到我的博客：<a href="http://www.xiaoqiang.org" target="_blank">小强ORG</a>
+                3.意见或者意见请反馈到我的博客：<a href="http://www.xiaoqiang.org" target="_blank">小强ORG</a>
             </li>
         </div>        
     </div>
@@ -80,6 +82,7 @@
         </div>
     </div>
 </div>
+<!--
 <div id="console">
     <div id="console-event-handler"></div>
     <div class="console-nav">
@@ -97,6 +100,7 @@
         <div id="stderr" class="console-content"></div>
     </div>
 </div>
+-->
 <div id="msg"></div>
 <script type="text/javascript">
 
