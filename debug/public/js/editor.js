@@ -1,6 +1,12 @@
-var editor, actionLock = false, tabkey = false, // 事件锁
- onStdErr = false, onStdOut = false, //鼠标是否在std的div区域内，如果在则不把滚动条往下拉
- timer = null, num = -1;
+var editor, 
+    actionLock = false,
+    tabkey = false, // 事件锁
+    onStdErr = false,
+    onStdOut = false, //鼠标是否在std的div区域内，如果在则不把滚动条往下拉
+    timer = null, 
+    num = -1,
+    address,    
+    w;
 /*
  * 动态设定编辑器尺寸
  */
@@ -22,7 +28,6 @@ var setEditorSize = function(h, w, hideConsole, loc){
     if (editor) 
         editor.resize();
 }
-
 var setFileListSize = function(height, hideConsole, loc){
     height = height || document.documentElement.clientHeight - 145;
     if (!hideConsole && loc === "BOTTOM") {
@@ -33,7 +38,6 @@ var setFileListSize = function(height, hideConsole, loc){
         "overflow": "auto"
     });
 }
-
 var setElementsSize = function(){
     var display = false, location;
     if (!display) {// 隐藏console
@@ -80,6 +84,19 @@ var initEditor = function(){
             actionLock = false;
         }
     });
+    editor.commands.addCommand({
+        name: 'Run',
+        bindKey: {
+            win: 'Ctrl-R',
+            mac: 'Command-R',
+            sender: 'editor'
+        },
+        exec: function(env, args, request){
+            if (actionLock) return false;
+            pop().location = address;
+            actionLock = false;
+        }
+    });
     editor.getSession().on('change', onChange); // 绑定编辑器事件
     $("#editor-theme").change(function(){
         if (!editor) 
@@ -123,12 +140,14 @@ var onChange = function(){
 $(window).resize(function(){
     setElementsSize(); // 编辑器和控制台尺寸自适应
 });
-
-
+var pop = function() {
+        return window.open('about:blank');
+}
 $(document).keydown(function(e){
     // 捕获键盘按键
     if (e.metaKey || e.ctrlKey) {
-        var save = 'S';
+        var save = 'S',
+        run = 'R';
         if (editor && e.keyCode === save.charCodeAt(0)) {
             if (actionLock) 
                 return false;
@@ -136,16 +155,21 @@ $(document).keydown(function(e){
             saveFile();
             actionLock = false;
             return false;
+        }else if(editor && e.keyCode === run.charCodeAt(0)){
+            if (actionLock) 
+                return false;
+            actionLock = true;
+            window.showModalDialog(address);
+            actionLock = false;
+            return false;
         }
     }
 });
-
 window.onbeforeunload = function(){
     if (tabkey) { // 有尚未保存的文件
         return '文件尚未保存，现在离开本页面将丢失已修改的内容。确认离开页面？';
     }
 };
-
 var htmlspecialchars = function(str){
     if (typeof(str) == "string") {
         str = str.replace(/&/g, "&amp;"); /* must do &amp; first */
@@ -157,7 +181,7 @@ var htmlspecialchars = function(str){
     }
     return str;
 }
-
+/*
 /*
  * 显示顶部提示信息
  */
@@ -173,12 +197,10 @@ var showMsg = function(content, waiting, speed){
         }, waiting);
     });
 }
-
 var setStatusBar = function(){
     var d = new Date(), curr = d.toLocaleString(), statbar = $("#statbar");
     statbar.html("已保存于" + curr);
 }
-
 /*
  * 保存文件
  */
@@ -205,7 +227,6 @@ var saveFile = function(){
         
     });
 }
-
 //绑定鼠标进出std DIV的事件
 function mouseOnStdDiv(){
     $("#stdout").mouseenter(function(){
@@ -221,7 +242,7 @@ function mouseOnStdDiv(){
         onStdErr = false;
     })
 }
-
+/*
 //获取stdErr和stdOut
 function getOutput(){
     $.ajax({
@@ -262,15 +283,10 @@ function getOutput(){
             getOutput();
         }        
     });
-}
-
-
-
+}*/
 $(function(){
-    var id = $('#logo').attr('rel');
+    address = $('#nav-run a').attr('href');
     setElementsSize(); // 初始化编辑器和控制台尺寸
     initEditor();
     //getOutput();
 });
-
-
